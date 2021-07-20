@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Header from "./Header";
 import MainSection from "./MainSection";
 
@@ -61,10 +61,21 @@ const useTodos = () => {
 };
 
 const App = () => {
+
+  const [todos, setTodos] = useState([])
+
+  fetch("/api/v2/todos").then(response => setTodos(response.todos))
+
   const [
-    todos,
-    { addTodo, deleteTodo, editTodo, toggleTodo, toggleAllTodo, clearCompleted }
-  ] = useTodos();
+    { addTodo   
+    , deleteTodo       
+    , editTodo
+    , toggleTodo                
+    , toggleAllTodo             
+    , clearCompleted           ,
+
+}
+  ] = useTodos(todos);
 
   return (
     <div>

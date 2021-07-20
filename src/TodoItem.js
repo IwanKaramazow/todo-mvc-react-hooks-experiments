@@ -42,9 +42,9 @@ export default class TodoItem extends Component {
       );
     } else {
       element = (
-        <div className="view">
+        <div style={{display: "flex"}}>
           <input
-            className="toggle"
+            style={{width: "20px", height: "20px"}}
             type="checkbox"
             checked={todo.completed}
             onChange={() => toggleTodo(todo.id)}

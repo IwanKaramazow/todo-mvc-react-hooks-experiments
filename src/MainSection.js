@@ -44,20 +44,40 @@ const MainSection = ({
           <label onClick={toggleAllTodo} />
         </span>
       )}
-      <TodoList
-        todos={visibleTodos}
-        deleteTodo={deleteTodo}
-        editTodo={editTodo}
-        toggleTodo={toggleTodo}
-      />
+       <ul className="todo-list">
+        {todos.map(todo => (
+          <TodoItem
+            todo={todo}
+            editTodo={editTodo}
+            toggleTodo={toggleTodo}
+            deleteTodo={deleteTodo}
+          />
+        ))}
+      </ul>
       {!!todosCount && (
-        <Footer
-          visibilityFilter={visibilityFilter}
-          setFilter={setFilter}
-          completedCount={completedCount}
-          activeCount={todosCount - completedCount}
-          clearCompleted={clearCompleted}
-        />
+         <footer className="footer">
+            <span className="todo-count">
+              <strong>{activeCount || "No"}</strong> {itemWord} left
+            </span>
+            <ul className="filters">
+              {Object.keys(FILTER_TITLES).map(filter => (
+                <li>
+                  <a
+                    className={classnames({ selected: filter === visibilityFilter })}
+                    style={{ cursor: "pointer" }}
+                    onClick={() => setFilter(filter)}
+                  >
+                    {FILTER_TITLES[filter]}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            {!!completedCount && (
+              <button className="clear-completed" onClick={clearCompleted}>
+                Clear completed
+              </button>
+            )}
+          </footer>
       )}
     </section>
   );

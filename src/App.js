@@ -62,11 +62,9 @@ const useTodos = () => {
 
 const App = () => {
 
-const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState([])
 
-useEffect(() => {
   fetch("/api/v2/todos").then(response => setTodos(response.todos))
-})
 
   const [
     { addTodo, deleteTodo, editTodo, toggleTodo, toggleAllTodo, clearCompleted }

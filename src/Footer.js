@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
-import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from "./TodoFilters";
+import { SL, SD, SE } from "./TodoFilters";
 
 const FILTER_TITLES = {
-  [SHOW_ALL]: "All",
-  [SHOW_ACTIVE]: "Active",
-  [SHOW_COMPLETED]: "Completed"
+  [SL]: "All",
+  [SE]: "Active",
+  [SD]: "Completed"
 };
 
 const Footer = ({

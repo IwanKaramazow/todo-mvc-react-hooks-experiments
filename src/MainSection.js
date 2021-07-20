@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Footer from "./Footer";
 import TodoList from "./TodoList";
-import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from "./TodoFilters";
+import { SL, SD, SE } from "./TodoFilters";
 
 const MainSection = ({
   todos,
@@ -12,19 +12,19 @@ const MainSection = ({
   toggleAllTodo,
   clearCompleted
 }) => {
-  const [visibilityFilter, setFilter] = useState(SHOW_ALL);
+  const [visibilityFilter, setFilter] = useState(SL);
 
   const todosCount = todos.length;
   const completedCount = todos.filter(({ completed }) => completed).length;
   let visibleTodos;
   switch (visibilityFilter) {
-    case SHOW_ALL:
+    case SL:
       visibleTodos = todos;
       break;
-    case SHOW_COMPLETED:
+    case SD:
       visibleTodos = todos.filter(t => t.completed);
       break;
-    case SHOW_ACTIVE:
+    case SE:
       visibleTodos = todos.filter(t => !t.completed);
       break;
     default:

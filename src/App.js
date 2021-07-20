@@ -67,7 +67,14 @@ const App = () => {
   fetch("/api/v2/todos").then(response => setTodos(response.todos))
 
   const [
-    { addTodo, deleteTodo, editTodo, toggleTodo, toggleAllTodo, clearCompleted }
+    { addTodo   
+    , deleteTodo       
+    , editTodo
+    , toggleTodo                
+    , toggleAllTodo             
+    , clearCompleted           ,
+
+}
   ] = useTodos(todos);
 
   return (
